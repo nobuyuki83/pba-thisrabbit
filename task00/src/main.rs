@@ -58,13 +58,21 @@ fn problem1() -> anyhow::Result<()> {
         
         // modify the defninition of p2
         let p2 = [
-            p1[0],
-            p1[1],
+            p1[0] + 50f32 * (radian * 2f32).cos(),
+            p1[1] - 50f32 * (radian * 2f32).sin(),
         ];
         del_canvas::rasterize::line::draw_dda(&mut canvas.data, canvas.width, &p1, &p2, 2);
         trajectory.push(p2); // hint
         // draw trajectoty using for loop below.
-
+        if trajectory.len() > 1 {
+            let mut previous_point: Option<&[f32;2]> = None;
+            for history_point in trajectory.iter() {
+                if previous_point.is_some() {
+                    del_canvas::rasterize::line::draw_dda(&mut canvas.data, canvas.width, previous_point.unwrap(), &history_point, 3);
+                }
+                previous_point = Option::from(history_point);
+            }
+        }
         // ---------------------
         // no further edit from here
         canvas.write(); // save current frame

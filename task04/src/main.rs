@@ -298,8 +298,8 @@ fn nearest_kdtree_faster(
 
     // division in y-direction
     if i_depth % 2 == 1 {
-        aabb_0 = [aabb_node[0], pos_node.y, aabb_node[2], aabb_node[3]];
-        aabb_1 = [aabb_node[0], aabb_node[1], aabb_node[2], pos_node.y];
+        aabb_0 = [aabb_node[0], aabb_node[1], aabb_node[2], pos_node.y];
+        aabb_1 = [aabb_node[0], pos_node.y, aabb_node[2], aabb_node[3]];
     }
 
     let mut subtree_0 = nodes[idx_node].idx_node_left;

@@ -312,7 +312,7 @@ fn nearest_kdtree_faster(
         mem::swap(&mut subtree_0, &mut subtree_1);
     }
 
-    nearest_kdtree_naive(
+    nearest_kdtree_faster(
         idx_node_nearest,
         pos_in,
         nodes,
@@ -320,7 +320,7 @@ fn nearest_kdtree_faster(
         &aabb_0,
         i_depth + 1,
     );
-    nearest_kdtree_naive(
+    nearest_kdtree_faster(
         idx_node_nearest,
         pos_in,
         nodes,

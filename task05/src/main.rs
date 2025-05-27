@@ -11,7 +11,18 @@ pub fn pixel_north_west_to_xy(xy: &[f32; 2], img_resolution: usize) -> Option<us
     // ------------------
     // implement some code below.
 
-    None // comment out
+    if x < 0.0 || y < 0.0 {
+        return None;
+    }
+
+    let xi = x as usize;
+    let yi = y as usize;
+
+    if xi + 1 >= img_resolution || yi + 1 >= img_resolution {
+        return None;
+    }
+
+    Some((img_resolution - 1 - yi - 1) * img_resolution + xi)
 
     // no edit from here
     // -----------------
@@ -63,7 +74,12 @@ pub fn gradient(xy: &[f32; 2], img_resolution: usize, pix2val: &[f32]) -> [f32; 
     // ---------------------
     // write some code below to compute gradient
 
-    [0f32, 0f32] // comment out
+    let dx = ry * (val_ne - val_nw) + (1.0 - ry) * (val_se - val_sw);
+    let dy = (1.0 - rx) * (val_nw - val_sw) + rx * (val_ne - val_se);
+
+    // Though multiplying [dx, dy] by img_resolution will output the same result as thumbnail.gif,
+    // but I don't think it is necessary, since later the gradient is then multiplied by 0.001...
+    [dx * img_resolution as f32, dy * img_resolution as f32]
 
     // no edit from here
     // -----------------
@@ -109,7 +125,7 @@ fn solve_laplace_gauss_seidel_on_grid(
             // ------------------------
             // write some code below
 
-            // pix2val[i_pix_center] =  // hint
+            pix2val[i_pix_center] = (val_north + val_south + val_west + val_east) / 4.0;
 
             // no edit from here
             // -------------------------------

@@ -75,11 +75,9 @@ Write the coordinate of the center of gravity below.
 
 | the center of gravity |
 |-----------------------|
-| (?, ?, ?)             |
+| (-0.02, -0.16, -0.08) |
 
 Write a few lines of code around `line #70` in the `pba-<username>/task09/task09/MyHangerGD.cs`.
-
-<img src="doc_imgs/block_sparse_matrix.png" width="400">
 
 
 ### Take a screenshot
@@ -94,7 +92,7 @@ Write down the energy value at the 300th frame shown in the Debug output in the 
 
 | energy at 300th frame |
 |-----------------------|
-| ???                   |
+| -0.4422223            |
 
 
 
